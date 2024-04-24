@@ -1,0 +1,225 @@
+/*
+A variables-ben csináltuk ezeket a dolgokat és most itt végigmegyünk rajtuk és csinálunk belőlük class-okat 
+
+$colors:(
+    "light-beige": #f1ebe9,
+    "beige": #e2ddd9,
+    "light-brown": #db9457,
+    "light-grey": #edeeed,
+    "light-grey-2": #f6f6f7,
+    "dark-grey": #242424
+);
+
+$sizes:(
+    "xs": 640px,
+    "sm": 720px,
+    "md": 960px,
+    "lg": 1080px,
+    "xl": 1280px
+);
+
+$spacings:(
+    "xs": 3px,
+    "sm": 5px,
+    "md": 10px,
+    "lg": 15px,
+    "xl": 20px,
+    "xxl": 30px
+);
+
+ezeken megyünk végig 
+fontos a színtatika 
+
+1. @each 
+2. $key, $value
+3. in
+4. $colors
+
+@each $key, $value in $colors {
+    
+}
+
+és így ezzel csomó mindent lehet csinálni pl. végigmenni a colors-on 
+@each $key, $value in $colors {
+    .-color-#{$key} {
+        color:$value;
+    }
+}
+
+ez azt fogja csinálni, hogy jön elöször a colors-ban a light-beige nevű kulcs, mert ez a kulcsunk .#{key}-color, tehát ennek a class-nek 
+az lesz az értéke, hogy value ->  color:$value
+
+belseje meg a {} után így néz ki 
+1. . (pont, hogy class-t csináljunk belöle)
+2. # (pont után jön egy # mintha id lenne)
+3. {}
+4. ebbe a {} megadjuk a $key-t (fontos, hogy mindig a key meg a value előtt van egy $-jel)
+5. -color (itt jelen esetben egy color lesz, de ez lehet bármi más)
+
+megint egy {} mint ahogy csináljuk css-ben is 
+1. megadjuk, hogy mi legyen (color)
+2. itt meg, hogy mi legyen az értéke -> $value
+
+ez nagyon fontos!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+vagy nem is ez volt pontosan az osztály-neve, hanem a color a $key elött van 
+mondjuk, hogy color-white 
+
+és akkor ugyanígy lehet mást is csinálni nem csak color-t, hanem bg-color-t, mert itt végigmentünk a $colors-on és 
+csinálhatunk bármit, aminek az értéke, mondjuk egy szín
+
+@each $key, $value in $colors {
+    .-color-#{$key} {
+        color:$value;
+    }
+
+    .bg-#{$key} {
+        background-color:$value;
+    }
+}
+
+*/
+
+@each $key, $value in $colors {
+    .color-#{$key} {
+        color:$value;
+    }
+
+    .bg-#{$key} {
+        background-color:$value;
+    }
+}
+
+/*
+ha ez meg van, akkor majd lefordítjuk a style.css-be de előtte a style.scss-be beimportálunk mindent 
+*/
+
+/*
+container-re a méretek 
+*/
+
+@each $key, $value in $sizes {
+    .container-#{$key} {
+        max-width:$value;
+    }
+}
+/*
+és a style.css-ben miután lefordítottuk a sass scss/style.scss css/style.css
+container-xs {
+    max-width: 640px;
+}
+container-sm {
+    max-width: 720px;
+}
+
+és akkor így automatikusan le vannak generálva
+spaicing-vel is tudjuk ugyanezt csinálni amit fel lehet használni a padding-re meg a margin-ra is 
+*/
+
+@each $key, $value in $spacings {
+    .p-#{$key} {
+        padding:$value; /*de viszont ezt így nem lehet megadni max-val padding: max($value, 0.35vw), mert akkor a az xs, sm,xl mindenhol 0.35vw*/
+    }
+
+    .m-#{$key} {
+        margin:$value;
+    }
+
+    /*
+    meg lehet ezeket csinálni margin-left, right, top, bottom-ra is!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    vagy akár olyat is, hogy mx, ami a margin left meg right és my ami meg a top és bottom!! -> x - y tengely
+    */
+    .ml-#{$key} {
+        margin-left:$value;
+    }
+    .mr-#{$key} {
+        margin-right:$value;
+    }
+    .mt-#{$key} {
+        margin-top:$value;
+    }
+    .mb-#{$key} {
+        margin-bottom:$value;
+    }
+    .mx-#{$key} {
+        margin-left:$value;
+        margin-right:$value;
+
+    }
+    .my-#{$key} {
+        margin-top:$value;
+        margin-bottom:$value;
+    }
+
+    /*
+    ugyanezt meg lehet oldani padding-vel is 
+    és nagyon gyorsan ki lehet alakítani egy keretrendszert!! nem kell kézzel beírni az összes értéket 
+    */
+
+    .pl-#{$key} {
+        padding-left:$value;
+    }
+    .pr-#{$key} {
+        padding-right:$value;
+    }
+    .pt-#{$key} {
+        padding-top:$value;
+    }
+    .pb-#{$key} {
+        padding-bottom:$value;
+    }
+    .px-#{$key} {
+        padding-left:$value;
+        padding-right:$value;
+
+    }
+    .py-#{$key} {
+        padding-top:$value;
+        padding-bottom:$value;
+    }
+
+    /*
+    nagyon hasonlót meg lehet csinálni a grid-gap-ekkel -> grid.scss
+    */
+}
+/*
+itt lehet @media screen and csinálni az each-en kivül!!! 
+
+@each $key, $value in $spacings {
+    .p-#{$key} {
+        padding: $value;
+    }
+}
+    
+@media screen and (min-width: 576px) {
+    @each $key, $value in $spacings {
+        .p-md-#{$key} {
+            padding: $value;
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    @each $key, $value in $spacings {
+        .p-lg-#{$key} {
+            padding: $value;
+        }
+    }
+}
+
+@media screen and (min-width: 992px) {
+    @each $key, $value in $spacings {
+        .p-xl-#{$key} {
+            padding: $value;
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    @each $key, $value in $spacings {
+        .p-xxl-#{$key} {
+            padding: $value;
+        }
+    }
+} 
+    */

@@ -1,0 +1,49 @@
+@each $key, $value in $spacings{
+    .gap-#{$key} {
+        grid-gap:$value;
+    } 
+}
+
+/*
+Ezelből tudunk csinálni mixin-eket, amik automatikusan végigmennek
+->
+csinálunk egy mixin.scss
+
+-> 
+
+@mixin mapMixin($map, $value, $prop) {
+    @each $key, $value in $map {
+        .#{$clsName}-#{$key} {
+            #{$prop}:$value;
+        }
+    }
+}
+
+itt pedig meghívjuk ezt 
+include-val kell meghívni itt a dolgokat!!!!!!!!!!!!!
+*/
+@include mapMixin($spacings, "gap", grid-gap);
+/*nagyon fontos!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+/*
+fontos, hogyha a style-ban szeretnénk lefordítani, akkor ott be legyen importálva!!!!!
+@import "mixins.scss";
+
+lefordítottuk és a style.css-be ott lesznek a grid-gap-ek 
+.gap-xs {
+    grid-gap: 3px;
+}
+
+.gap-sm {
+    grid-gap: 5px;
+}
+
+.gap-md {
+    grid-gap: 10px;
+}
+
+stb.
+
+@include mapMixin($spacings, "gap", grid-gap);
+és akkor ezt a kódot meg lehet hívni, mindenhogy és akkor nincsen szükség ennyi dologra, amit a settings-ben csináltunk a margin, padding-ekre 
+*/

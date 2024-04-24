@@ -1,0 +1,48 @@
+@import "flex.scss";
+@import "grid.scss";
+@import "init.scss";
+@import "variables.scss";
+@import "settings.scss";
+@import "inputs.scss";
+@import "mixins.scss";
+
+/*
+most a style.css-be ahova dolgoztunk oda fogjuk lefordítani a dolgokat, amiket csináltunk a settings.scss-be
+de ennek érdekében bemásolunk mindent ide ami benne van a style.css-ben 
+
+@each $key, $value in $colors {
+    .-color-#{$key} {
+        color:$value;
+    }
+
+    .bg-#{$key} {
+        background-color:$value;
+    }
+
+és akkor így tudjuk lefordítani a dolgokat 
+a terminálba!!!
+-> 
+sass scss/style.scss css/style.css
+
+most én nem fordítom le de egyébként így kell és akkor a style.css-ben lesznek a dolgok 
+-> 
+.color-beige {
+    color: #e2ddd9
+}
+
+.bg-beige {
+    background-color: #e2ddd9
+}
+
+és akkor így az összes színnel, ami meg volt adva a $colors-ben, azzal csináltunk a settings-be ugye ezt a sémát 
+@each $key, $value in $colors {
+    .-color-#{$key} {
+        color:$value;
+    }
+
+    .bg-#{$key} {
+        background-color:$value;
+    }
+
+a style.css-ben pedig ott lesznek az osztályok, amiket fel tudunk majd használni!!!!! 
+*/

@@ -1,0 +1,91 @@
+/*
+itt létrehozunk egy map-et 
+$colors:();
+színtaktika!!!!!!!!!!!!!!!!!!
+ebben a map-ben lesznek kulcs-értékpárok 
+kulcsok mindig egy ""-ben vannak, értékek nem 
+-> 
+"light-beige":#f1ebe9
+
+$colors:(
+    "light-beige": #f1ebe9,
+    "beige": #e2ddd9,
+    "light-brown": #db9457,
+    "light-grey": #edeeed,
+    "light-grey-2": #f6f6f7,
+    "dark-grey": #242424
+);
+
+nagyon fontos a színtaktika 
+1. $
+2. a neve a dolog-nak pl.colors
+3. : 
+4. (); -> és akkor ide mennek bele a kulcs-értékpárok 
+
+"kulcs":érték
+*/
+
+$colors:(
+    "light-beige": #f1ebe9,
+    "beige": #e2ddd9,
+    "light-brown": #db9457,
+    "light-grey": #edeeed,
+    "light-grey-2": #f6f6f7,
+    "dark-grey": #242424
+);
+
+$sizes:(
+    "xs": 640px,
+    "sm": 720px,
+    "md": 960px,
+    "lg": 1080px,
+    "xl": 1280px
+);
+
+$spacings:(
+    "xs": 3px,
+    "sm": 5px,
+    "md": 10px,
+    "lg": 15px,
+    "xl": 20px,
+    "xxl": 30px
+);
+
+/*
+Ezek itt a változóink és azok úgy müködnek, hogy a settings-scss-ben végig tudunk menni a sizes-on vagy a colors-on
+mondjuk létrehozzuk ott a színeket  
+
+az eredeti variables-be ezért raktuk be így
+-> 
+    --spacing-xs:3px;
+    --spacing-sm:5px;
+    --spacing-md:10px;
+    --spacing-lg:15px;
+    --spacing-xl:20px;
+    --width-xs:640px;
+    --width-sm:720px;
+    --width-md:960px;
+    --width-lg:1080px;
+    --width-xl:1280px;
+
+itt meg csak sm, md, lg stb..
+mert ott nem lehetet ugyanaz a neve, mert ott külön kell, hogy width meg spacing de itt viszont lehet, mert ezek különálló adatszerkezetek
+$sizes:(
+    "xs": 640px,
+    "sm": 720px,
+    "md": 960px,
+    "lg": 1080px,
+    "xl": 1280px
+);
+
+$spacings:(
+    "xs": 3px,
+    "sm": 5px,
+    "md": 10px,
+    "lg": 15px,
+    "xl": 20px,
+    "xxl": 30px
+);
+
+a settings-ben megcsináljuk modnjuk a container-re 
+*/

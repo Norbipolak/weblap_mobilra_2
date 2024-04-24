@@ -1,0 +1,38 @@
+@mixin mapMixin($map, $value, $prop) {
+    @each $key, $value in $map {
+        .#{$clsName}-#{$key} {
+            #{$prop}:$value;
+        }
+    }
+}
+
+/*
+@mixin mapMixin() {
+
+}
+
+ez mapMixin az vár nekünk egy map-et, clsName-et és egy prop-ot(hogy mit adunk meg neki pl. padding, margin-left stb.)!!!!
+->
+@mixin mapMixin($map, $value, $prop) {
+    
+}
+-> 
+@mixin mapMixin($map, $value, $prop) {
+    @each $key, $value in $map {
+        .#{$clsName}-#{$key} {
+            #{$prop}:$value;
+        }
+    }
+}
+
+behelyetesítünk mindent oda, ahova kell!!!
+és akkor csak ezt kell meghívogatni, úgyhogy 
+1. megadjuk neki a map-et, amin végigmegyünk 
+2. megadjuk neki a clsName-t, ahogyan szeretnénk ezeket az osztályokat nevezni
+3. megadjuk neki a prop-ot 
+
+grid.scss-ben meghívjuk a mixin-t!!!!!!!!!!!!!!!
+
+a meghívása !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+@include mapMixin($spacins, "gap", grid-gap);
+*/
